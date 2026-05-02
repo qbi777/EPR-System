@@ -1,0 +1,6 @@
+{
+  "name": "RetailFlow ERP",
+  "description": "Modern frontend ERP for retail shops featuring POS, inventory, expenses, and role-based management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["POS", "Inventory", "Accounting", "Role Management"]
+}

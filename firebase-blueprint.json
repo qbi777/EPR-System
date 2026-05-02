@@ -1,0 +1,132 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Inventory product details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "sku": { "type": "string" },
+        "price": { "type": "number" },
+        "purchasePrice": { "type": "number" },
+        "openingStock": { "type": "number" },
+        "purchased": { "type": "number" },
+        "sold": { "type": "number" },
+        "closingStock": { "type": "number" },
+        "category": { "type": "string" }
+      },
+      "required": ["id", "name", "sku", "price", "purchasePrice"]
+    },
+    "Sale": {
+      "title": "Sale",
+      "description": "Transaction details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "items": { "type": "array" },
+        "totalAmount": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "cashAmount": { "type": "number" },
+        "qrAmount": { "type": "number" },
+        "cardAmount": { "type": "number" },
+        "date": { "type": "string" },
+        "customerName": { "type": "string" }
+      },
+      "required": ["id", "items", "totalAmount", "paymentMethod", "date"]
+    },
+    "Expense": {
+      "title": "Expense",
+      "description": "Operating expenses",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "amount": { "type": "number" },
+        "date": { "type": "string" },
+        "category": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "title", "amount", "date", "category"]
+    },
+    "Purchase": {
+      "title": "Purchase",
+      "description": "Inventory purchase records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "productId": { "type": "string" },
+        "productName": { "type": "string" },
+        "quantity": { "type": "number" },
+        "price": { "type": "number" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "productId", "quantity", "price", "date"]
+    },
+    "DaySummary": {
+      "title": "DaySummary",
+      "description": "Daily session reconciliation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string" },
+        "isStarted": { "type": "boolean" },
+        "isClosed": { "type": "boolean" },
+        "openingStockValue": { "type": "number" },
+        "purchaseAmount": { "type": "number" },
+        "closingStockValue": { "type": "number" },
+        "salesAmount": { "type": "number" },
+        "scanPayAmount": { "type": "number" },
+        "cardPayAmount": { "type": "number" },
+        "expensesAmount": { "type": "number" },
+        "cashAmount": { "type": "number" },
+        "profit": { "type": "number" },
+        "startTime": { "type": "string" },
+        "endTime": { "type": "string" }
+      },
+      "required": ["id", "date", "isClosed", "startTime"]
+    },
+    "User": {
+      "title": "User",
+      "description": "System user profiles",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "username": { "type": "string" },
+        "documents": { "type": "array" }
+      },
+      "required": ["id", "name", "role", "email"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "System activity logs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userRole": { "type": "string" },
+        "action": { "type": "string" },
+        "entity": { "type": "string" },
+        "details": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "userId", "action", "entity", "timestamp"]
+    }
+  },
+  "firestore": {
+    "products": { "schema": "Product", "description": "Inventory" },
+    "sales": { "schema": "Sale", "description": "POS Transactions" },
+    "expenses": { "schema": "Expense", "description": "Cash outflows" },
+    "purchases": { "schema": "Purchase", "description": "Stock updates" },
+    "daySummaries": { "schema": "DaySummary", "description": "Daily sessions" },
+    "users": { "schema": "User", "description": "Team management" },
+    "auditLogs": { "schema": "AuditLog", "description": "Security logs" },
+    "config/app": { "schema": "object", "description": "App settings" },
+    "config/company": { "schema": "object", "description": "Company profile" }
+  }
+}
